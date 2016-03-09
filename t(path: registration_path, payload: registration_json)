@@ -1,0 +1,32 @@
+
+[1mFrom:[0m /home/dewet/ruby/battleships/platform45.rb @ line 32 Platform45#register:
+
+     [1;34m7[0m:   [32mdef[0m [1;34mregister[0m
+     [1;34m8[0m:     @host = [31m[1;31m'[0m[31mbattle.platform45.com[1;31m'[0m[31m[0m
+     [1;34m9[0m: @port = [31m[1;31m'[0m[31m80[1;31m'[0m[31m[0m
+    [1;34m10[0m: 
+    [1;34m11[0m: registration_path = [31m[1;31m"[0m[31m/register[1;31m"[0m[31m[0m
+    [1;34m12[0m: nuke_path = [31m[1;31m"[0m[31m/nuke[1;31m"[0m[31m[0m
+    [1;34m13[0m: 
+    [1;34m14[0m: registration_json = {
+    [1;34m15[0m:     [31m[1;31m"[0m[31mname[1;31m"[0m[31m[0m => [31m[1;31m"[0m[31mname[1;31m"[0m[31m[0m,
+    [1;34m16[0m:     [31m[1;31m"[0m[31memail[1;31m"[0m[31m[0m => [31m[1;31m"[0m[31memail@gmail.com[1;31m"[0m[31m[0m
+    [1;34m17[0m:   }.to_json
+    [1;34m18[0m: 
+    [1;34m19[0m: nuke_json = {
+    [1;34m20[0m:     [31m[1;31m"[0m[31mid[1;31m"[0m[31m[0m => [31m[1;31m"[0m[31m4000[1;31m"[0m[31m[0m,
+    [1;34m21[0m:     [31m[1;31m"[0m[31mx[1;31m"[0m[31m[0m => [31m[1;31m"[0m[31m#{rand(10)}[0m[31m[1;31m"[0m[31m[0m,
+    [1;34m22[0m:     [31m[1;31m"[0m[31my[1;31m"[0m[31m[0m => [31m[1;31m"[0m[31m#{rand(10)}[0m[31m[1;31m"[0m[31m[0m
+    [1;34m23[0m:   }.to_json
+    [1;34m24[0m: 
+    [1;34m25[0m: [32mdef[0m [1;34mpost[0m([35mpath[0m: [31m[1;31m'[0m[31m/nuke[1;31m'[0m[31m[0m, [35mpayload[0m:)
+    [1;34m26[0m:   req = [1;34;4mNet[0m::[1;34;4mHTTP[0m::[1;34;4mPost[0m.new(path)
+    [1;34m27[0m:   req.body = payload
+    [1;34m28[0m:   response = [1;34;4mNet[0m::[1;34;4mHTTP[0m.new(@host, @port).start {|http| http.request(req) }
+    [1;34m29[0m:   puts [31m[1;31m"[0m[31mResponse #{response.code}[0m[31m #{response.message}[0m[31m:[0m
+    [1;34m30[0m:   [1;34m#{response.body}"[0m
+    [1;34m31[0m: [32mend[0m
+ => [1;34m32[0m: binding.pry
+    [1;34m33[0m: post([35mpath[0m: registration_path, [35mpayload[0m: registration_json)
+    [1;34m34[0m:   [32mend[0m
+
