@@ -7,7 +7,7 @@ describe Platform45 do
     expect(response.class).to eq(Hash)
     expect(response[:code]).to eq("200")
     expect(response[:message]).to eq("OK")
-    expect(response[:id]).to match(/\d+/)
+    expect(response[:id]).to match(/\d{4}/)
     expect(response[:x]).to be_between(1, 10).inclusive
     expect(response[:y]).to be_between(1, 10).inclusive
   end
