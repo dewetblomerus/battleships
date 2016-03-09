@@ -1,6 +1,7 @@
 require 'net/http'
 require 'rubygems'
 require 'json'
+require 'pry'
 
 @host = 'battle.platform45.com'
 @port = '80'
