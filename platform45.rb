@@ -5,36 +5,36 @@ require 'pry'
 
 # Wraps the Platform45 Battleship API
 class Platform45
-  @host = 'battle.platform45.com'
-  @port = '80'
 
-  def self.register
-    registration_path = '/register'
-
+  def self.register(name:, email:)
     registration_json = {
-      'name': 'name',
-      'email': 'email@gmail.com'
+      'name': name,
+      'email': email
     }.to_json
 
-    response = post(path: registration_path, payload: registration_json)
+    response = post(path: '/register', message: registration_json)
 
     response_to_hash(response)
   end
 
-  def nuke
-    # nuke_path = '/nuke'
+  def self.nuke(id:, x:, y:)
+    nuke_json = {
+      'id': id,
+      'x': x.to_s,
+      'y': y.to_s
+    }.to_json
 
-    # nuke_json = {
-    #   'id': '4000',
-    #   'x': rand(10).to_s,
-    #   'y': rand(10).to_s
-    # }.to_json
+    response = post(path: '/nuke', message: nuke_json)
+
+    response_to_hash(response)
   end
 
-  def self.post(path: '/nuke', payload:)
+  def self.post(path:, message:)
+    host = 'battle.platform45.com'
+    port = '80'
     req = Net::HTTP::Post.new(path)
-    req.body = payload
-    response = Net::HTTP.new(@host, @port).start { |http| http.request(req) }
+    req.body = message
+    response = Net::HTTP.new(host, port).start { |http| http.request(req) }
     response
   end
 

@@ -5,7 +5,7 @@ http_interactions:
     uri: http://battle.platform45.com/register
     body:
       encoding: UTF-8
-      string: '{"name":"name","email":"email@gmail.com"}'
+      string: '{"name":"Name","email":"email@gmail.com"}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -32,7 +32,42 @@ http_interactions:
       - nginx/1.2.6 + Phusion Passenger 3.9.2.beta
     body:
       encoding: UTF-8
-      string: '{"id":"4119","x":7,"y":2}'
+      string: '{"id":"4131","x":4,"y":9}'
     http_version: 
-  recorded_at: Wed, 09 Mar 2016 20:17:11 GMT
+  recorded_at: Fri, 11 Mar 2016 19:55:28 GMT
+- request:
+    method: post
+    uri: http://battle.platform45.com/nuke
+    body:
+      encoding: UTF-8
+      string: '{"id":"4131","x":"0","y":"0"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '29'
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Powered-By:
+      - Phusion Passenger 3.9.2.beta
+      Server:
+      - nginx/1.2.6 + Phusion Passenger 3.9.2.beta
+    body:
+      encoding: UTF-8
+      string: '{"status":"miss","x":4,"y":8}'
+    http_version: 
+  recorded_at: Fri, 11 Mar 2016 19:55:29 GMT
 recorded_with: VCR 3.0.1
