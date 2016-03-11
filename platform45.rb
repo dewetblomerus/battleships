@@ -13,8 +13,6 @@ module Platform45
     }.to_json
 
     response = post(path: '/register', message: registration_json)
-
-    response_to_hash(response)
   end
 
   def self.nuke(id:, x:, y:)
@@ -25,8 +23,6 @@ module Platform45
     }.to_json
 
     response = post(path: '/nuke', message: nuke_json)
-
-    response_to_hash(response)
   end
 
   def self.post(path:, message:)
@@ -34,7 +30,7 @@ module Platform45
     req = Net::HTTP::Post.new(path)
     req.body = message
     response = Net::HTTP.new(host).start { |http| http.request(req) }
-    response
+    response_to_hash(response)
   end
 
   def self.response_to_hash(response)
