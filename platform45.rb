@@ -4,7 +4,7 @@ require 'json'
 require 'pry'
 
 # Wraps the Platform45 Battleship API
-class Platform45
+module Platform45
 
   def self.register(name:, email:)
     registration_json = {
@@ -31,10 +31,9 @@ class Platform45
 
   def self.post(path:, message:)
     host = 'battle.platform45.com'
-    port = '80'
     req = Net::HTTP::Post.new(path)
     req.body = message
-    response = Net::HTTP.new(host, port).start { |http| http.request(req) }
+    response = Net::HTTP.new(host).start { |http| http.request(req) }
     response
   end
 
